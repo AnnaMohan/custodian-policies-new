@@ -1,0 +1,12 @@
+policies:
+  - name: terminate-unused-ec2-instances
+    description: Terminate unused EC2 instances
+    resource: ec2
+    filters:
+      - type: metrics
+        name: CPUUtilization
+        op: le
+        value: 1
+        days: 30
+    # actions:
+    #   - terminate

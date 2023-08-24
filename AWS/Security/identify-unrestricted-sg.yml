@@ -1,0 +1,21 @@
+policies:
+  - name: identify-unrestricted-sg
+    description: This policy detects AWS security groups with unrestricted access to specified ports and takes defined actions.
+    resource: security-group
+    filters:
+      - type: ingress
+          #IpProtocol: -1
+        Cidr: "0.0.0.0/0"
+        Ports: [22, 443, 80, 5432]
+      # - type: ingress
+      #   CidrV6: "::/0"
+
+    actions:
+      - type: notify
+        to:
+          - soumya.de@nagarro.com
+        subject: Unrestricted Access to Specific Ports Detected
+        template: default.html
+        transport:
+          type: sqs
+          queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue

@@ -1,0 +1,12 @@
+policies:
+  - name: stop-rds-instances-off-peak-hours
+    description: Stop RDS instances during off-peak hours if feasible
+    resource: rds
+    region: us-east-1  # Replace with your desired region
+    filters:
+      - type: value
+        key: DBInstanceStatus
+        value: available  # Filter only available instances
+    actions:
+      - type: stop
+

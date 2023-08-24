@@ -1,0 +1,12 @@
+policies:
+  - name: auto-stop-high-cpu-instances
+    resource: aws.ec2-instance
+    filters:
+      - type: metric
+        name: CPUUtilization
+        value: 90
+        op: greater-than
+        aggregation: average
+        period: 3600  # 1 hour
+    actions:
+      - type: stop

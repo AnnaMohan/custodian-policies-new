@@ -1,0 +1,11 @@
+policies:
+  - name: enforce-rds-instance-type
+    resource: rds
+    filters:
+      - type: metric
+        name: CPUUtilization
+        value: 10
+        op: less-than
+    actions:
+      - type: modify-db-instance
+        instance-class: db.t3.medium

@@ -1,0 +1,19 @@
+policies:
+  - name: ensure-no-allow-all-rules-in-nacls
+    resource: aws.network-acl
+    filters:
+      # Filter ACLs that have entries allowing traffic from 0.0.0.0/0
+      - type: value
+        key: entries
+        # op: in
+        value:
+          - cidrBlock: "0.0.0.0/0"
+    actions:
+      - type: notify
+        to:
+          - admin@example.com  # Replace with the desired email address
+        subject: ALERT | Network ACLs with Allow All Rules Detected
+        template: default.html
+        transport:
+          type: sqs
+          queue: https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue
