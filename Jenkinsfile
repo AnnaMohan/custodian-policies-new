@@ -18,7 +18,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from your Git repository
-                git branch: 'master', credentialsId: 'GIT_PAT', url: 'https://github.com/Soumya220/policies.git'
+                git branch: 'master', credentialsId: 'GIT_PAT', url: 'https://github.com/Soumya220/custodian-policies.git'
             }
         }
 
