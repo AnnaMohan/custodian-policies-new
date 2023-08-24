@@ -1,0 +1,27 @@
+policies:
+- name: notify-unattached-ebs-volumes
+  resource: ebs
+  description: |
+    Notifies about unattached EBS volumes.
+  filters:
+  - type: value
+    key: State
+    value: available
+  - type: value
+    key: Attachments
+    op: eq
+    value: []
+  actions:
+  - type: notify
+    template: default.html
+    to:
+    - user@example.com
+    subject: ACTION REQUIRED | Unattached EBS volumes found
+    transport:
+      type: sqs
+      queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue
+    notificationType: sqs
+  mode:
+    type: periodic
+    schedule: rate(6 hours)
+    role: arn:aws:iam::200024982256:role/custodian
