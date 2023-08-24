@@ -1,0 +1,21 @@
+policies:
+  - name: find-unused-route53-hosted-zones
+    resource: aws.hostedzone
+    filters:
+      - type: value
+        key: ResourceRecordSets[?Type != 'NS' && Type != 'SOA']
+        op: eq
+        value: []
+    actions:
+      - type: notify
+        template: default.html
+        to:
+        - soumya.de@nagarro.com
+        subject: ACTION REQUIRED | EC2 Instances Running in Non-Business Hours
+        transport:
+          type: sqs
+          queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue
+    mode:
+      type: periodic
+      schedule: rate(6 hours)
+      role: arn:aws:iam::200024982256:role/custodian
