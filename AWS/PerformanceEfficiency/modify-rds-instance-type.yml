@@ -1,24 +1,24 @@
 policies:
-  - name: enforce-rds-instance-type
-    resource: rds
-    filters:
-      - type: metric
-        name: CPUUtilization
-        value: 10
-        op: less-than
+- name: enforce-rds-instance-type
+  resource: rds
+  filters:
+  - type: metric
+    name: CPUUtilization
+    value: 10
+    op: less-than
     # actions:
     #   - type: modify-db-instance
     #     instance-class: db.t3.medium
-    actions:
-      - type: notify
-        template: default.html
-        to:
-        - soumya.de@nagarro.com
-        subject: ACTION REQUIRED | EC2 Instances Running in Non-Business Hours
-        transport:
-          type: sqs
-          queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue
-    mode:
-        type: periodic
-        schedule: rate(6 hours)
-        role: arn:aws:iam::200024982256:role/custodian
+  actions:
+  - type: notify
+    template: default.html
+    to:
+    - soumya.de@nagarro.com
+    subject: ACTION REQUIRED | EC2 Instances Running in Non-Business Hours
+    transport:
+      type: sqs
+      queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue
+  mode:
+    type: periodic
+    schedule: rate(8 hours)
+    role: arn:aws:iam::200024982256:role/custodian
