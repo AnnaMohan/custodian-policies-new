@@ -1,24 +1,22 @@
 policies:
-- name: elb-low-request-count
-  resource: app-elb
+- name: filter-unused-eips
+  description: |
+    Filters out unused and unattached Elastic IP addresses (EIPs).
+  resource: aws.elastic-ip
   filters:
-  - type: metrics
-    name: RequestCount
-    statistics: Sum
-    days: 7
-    value: 7
-    missing-value: 0
-    op: greater-than
+  - type: value
+    key: attachment.State
+    value:
   actions:
   - type: notify
-    template: default.html
     to:
     - soumya.de@gmail.com
-    subject: ACTION REQUIRED | 
+    subject: ACTION REQUIRED | You have Unused and Unattached Elastic IP
+    template: finops_eip.html
     transport:
       type: sqs
       queue: https://sqs.us-east-1.amazonaws.com/200024982256/MyQueue
   mode:
     type: periodic
-    schedule: rate(8 hours)
+    schedule: rate(4 hours)
     role: arn:aws:iam::200024982256:role/custodian
