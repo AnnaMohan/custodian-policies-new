@@ -1,6 +1,6 @@
 policies:
 - name: auto-stop-high-cpu-instances
-  resource: aws.ec2-instance
+  resource: ec2
   filters:
   - type: metric
     name: CPUUtilization
