@@ -48,7 +48,7 @@ pipeline {
                     sh "chmod +x $CUSTODIAN_BIN"
                     // Execute Cloud Custodian with the policy file
                     // sh "$CUSTODIAN_BIN run --cache-period 0 --output-dir=. ${params.POLICY_FILE_NAME}"
-                    sh "$CUSTODIAN_BIN run --cache-period 0 --output-dir=/home/ubuntu/Soumya/tmp/repo ${params.POLICY_FILE_NAME}"
+                    sh "$CUSTODIAN_BIN run --cache-period 0 --output-dir /home/ubuntu/Soumya/tmp/repo  ${params.POLICY_FILE_NAME}"
                 }
             }
         }
