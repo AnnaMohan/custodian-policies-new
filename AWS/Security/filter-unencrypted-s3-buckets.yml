@@ -1,12 +1,12 @@
 policies:
   - name: filter-unencrypted-s3-buckets
     description: |
-      Filters out S3 buckets that are not encrypted.
+      Filters out S3 buckets that are not encrypted
     resource: s3
     region: us-east-1
     filters:
       - type: bucket-encryption
-        state: False
+        state: True
     actions:
       - type: notify
         to:
