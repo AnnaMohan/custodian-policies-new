@@ -1,6 +1,6 @@
 policies:
   - name: stop-idle-ec2-instances
-    resource: aws.ec2
+    resource: ec2
     filters:
       - type: metrics
         name: CPUUtilization
