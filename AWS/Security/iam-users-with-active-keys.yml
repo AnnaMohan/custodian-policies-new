@@ -9,7 +9,7 @@
             match-operator: and
             key: CreateDate
             value_type: age
-            value: 70
+            value: 90
             op: ge
         actions:
           - type: notify
