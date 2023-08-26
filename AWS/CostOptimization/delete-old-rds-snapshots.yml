@@ -3,7 +3,7 @@ policies:
     resource: rds-snapshot
     filters:
       - type: age
-        days: 60
+        days: 40
         op: ge
     actions:
     # - delete
