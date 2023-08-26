@@ -9,7 +9,7 @@ policies:
        op: greater-than
     actions:
     - type: remove-keys
-      disable: false
+      disable: true
       age: 90  # if we wanted to disable keys after 90 days of non-use 
     - type: remove-keys
       age: 180   # delete them after 180 days of nonuse
