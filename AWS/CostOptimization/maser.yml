@@ -1,3 +1,9 @@
-aaa
-bbb
-,
+policies:
+- name: notify-instances-without-tags-or-missing-specific-tags
+  description: ABC
+  resource: ec2
+  filters:
+  - or:
+    - 'tag:': absent
+  - and:
+    - tag:Team: absent
