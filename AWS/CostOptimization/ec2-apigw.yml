@@ -5,7 +5,7 @@ policies:
   - type: metrics
     name: Count
     statistics: Sum
-    days: 7
+    days: 6
     value: 7
     missing-value: 0
     op: greater-than
