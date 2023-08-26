@@ -1,6 +1,6 @@
 policies:
 - name: notify-instances-without-tags-or-missing-specific-tags
-  description: ABCDE
+  description: ABCDEF
   resource: ec2
   filters:
   - or:
