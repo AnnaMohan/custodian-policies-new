@@ -4,7 +4,7 @@ policies:
     filters:
       - type: metrics
         name: NetworkOut
-        value: 50
+        value: 500
         op: greater-than
         #aggregation: average
         period: 3600  # 1 hour
