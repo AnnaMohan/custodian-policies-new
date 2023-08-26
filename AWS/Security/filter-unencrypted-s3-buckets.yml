@@ -6,7 +6,7 @@ policies:
     region: us-east-1
     filters:
       - type: bucket-encryption
-        state: Fal
+        state: False
     actions:
       - type: notify
         to:
