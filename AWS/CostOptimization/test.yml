@@ -1,0 +1,7 @@
+policies:
+  - name: rds-snapshot-expired
+    resource: rds-snapshot
+    filters:
+      - type: age
+        days: 120
+        op: ge
