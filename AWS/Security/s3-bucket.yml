@@ -12,7 +12,7 @@ policies:
     actions:
       - type: notify
         to:
-          - soumya.de@nagarro.com
+          - soumya.de@nagarro.co
         subject: ALERT | Changes in S3 Buckets Detected
         template: default.html
         transport:
