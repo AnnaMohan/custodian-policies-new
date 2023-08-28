@@ -5,7 +5,7 @@ policies:
   filters:
   - type: check-public-block
     BlockPublicAcls: false         #false means it'll display bucktes which are publicly accessible
-    BlockPublicPolicy: true
+    BlockPublicPolicy: false
   actions:
   - type: notify
     to:
