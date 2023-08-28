@@ -9,7 +9,7 @@ policies:
   actions:
   - type: notify
     to:
-    - soumya.de@nagarro.com
+    - soumya.de@nagarro.co
     subject: ACTION REQUIRED | S3 Buckets are publicly accessible
     template: default.html
     transport:
