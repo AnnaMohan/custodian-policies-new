@@ -4,7 +4,7 @@ policies:
   filters:
   - type: metrics
     name: CPUUtilization
-    value: 20
+    value: 10
     op: less-than
     # actions:
     #   - type: modify-db-instance
